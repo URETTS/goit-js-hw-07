@@ -26,11 +26,12 @@ const images = [
 ];
 
 const gallery = document.querySelector('.gallery');
-images.forEach(image => {
-  const listItem = document.createElement('li');
-  const img = document.createElement('img');
-  img.src = image.url;
-  img.alt = image.alt;
-  listItem.appendChild(img);
-  gallery.appendChild(listItem);
-});
+const galleryHTML = images
+  .map(image => `
+    <li class="gallery-item">
+      <img src="${image.url}" alt="${image.alt}" class="gallery-image">
+    </li>
+  `)
+  .join('');
+
+gallery.innerHTML = galleryHTML;
